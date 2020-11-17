@@ -1,0 +1,258 @@
+@charset "utf-8";
+// 配置文件
+@import "config.less";
+// 样式库
+@import "lib.less";
+
+//页面初始化
+.Initialization();
+
+//=== 公共 Common START ===//
+/*#region 图标 */
+/*#endregion */
+
+/*#region bootstrap 修复 */
+.page {
+  a {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+/*#endregion */
+/*#region 全局设置 */
+input:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+/*#endregion */
+/*#region 隐藏上传的input */
+.upload_input {
+  position: fixed;
+  top: 0;
+  left: 10000rem;
+}
+
+// toast样式
+.ajxaLoading {
+  background: rgba(0, 0, 0, 0);
+}
+
+/*#endregion */
+//=== 公共 Common END ===//
+/*#region 设置滚动 */
+html,
+body {
+  height: 100%;
+  overflow: auto;
+  .scrollbar_box;
+}
+
+/*#endregion */
+//=== 公共弹窗 START ===//
+.cu-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1110;
+  opacity: 0;
+  outline: 0;
+  text-align: center;
+  -ms-transform: scale(1.185);
+  transform: scale(1.185);
+  backface-visibility: hidden;
+  transition: all 0.3s ease-in-out 0s;
+  pointer-events: none;
+
+  &.bottom-modal {
+    margin-bottom: -1000px;
+  }
+
+  &.show {
+    margin-bottom: 0;
+    opacity: 1;
+    transition-duration: 0.3s;
+    -ms-transform: scale(1);
+    transform: scale(1);
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: auto;
+  }
+
+  .cu-cancel-bg {
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .cu-dialog {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 400;
+    width: 100%;
+    overflow: hidden;
+    transform: translateX(0%);
+
+    .dialog_content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 0.16rem;
+
+      .detail {
+        width: 100%;
+        border-radius: 0.16rem;
+        color: #333333;
+        font-size: 0.36rem;
+        line-height: 0.5rem;
+        background: #fff;
+
+        &.gap {
+          margin-bottom: 0.14rem;
+        }
+
+        &.gap_bottom {
+          margin-bottom: 0.28rem;
+        }
+
+        .btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 1rem;
+          border-bottom: 1px solid #eeeeee;
+
+          &.btn_text_red {
+            color: #ef4b3a;
+          }
+
+          &.transparent {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+//=== 公共弹窗 END ===//
+
+/*#endregion */
+//=== 公共按钮 START ===//
+.g_btn_box {
+  height: 0.88rem;
+ .g_btn{
+  position: fixed;
+  width: 100%;
+  height: 0.88rem;
+  padding: 0 0.32rem;
+  bottom: 0.8rem;
+  left: 0;
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.32rem;
+    border-radius: 0.12rem;
+    height: 0.88rem;
+    width: 100%;
+    touch-action: none;
+    &.btn--del {
+      border: 1px solid #ef4b3a;
+      color: #ef4b3a;
+      background: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    &.btn--confirm {
+      background: #ef4b3a;
+    }
+
+    &.btn--disabled {
+      background: #fba49b;
+    }
+  }
+ }
+}
+
+//=== 公共按钮 END ===//
+/*#region  移动端 不使用fixed 定位的公共方法*/
+.pop_absolute_box{
+  position: absolute;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  overflow-y: auto;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1000;
+  &.pop_absolute_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &.pop_layer{
+    z-index: -1;
+  }
+  .pop_absolute_box_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    //background: red;
+  }
+}
+// 靠底
+.common_pop_content_bottom{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+/*#endregion */
+
+
+//修改注册选择区号下拉框样式
+.el-input__inner{
+  height: 50px ;
+  width: 100px ;
+  border: 0;
+}
+@media(max-width:1200px){
+  .el-input__inner{
+    height: 50px * 0.79;
+    border: 0;
+  }
+}
+
+
+//修改分页按钮样式
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #ffffff;
+  color: @cl-m;
+  border: 1px solid @cl-m;
+}
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{
+  background-color: #ffffff;
+  border: 1px solid #F0F2F5;
+}
